@@ -3,3 +3,132 @@
 @import url("https://fonts.googleapis.com/css2? family = Baloo + Da + 2: wght @ 400; 500; 600; 700; 800 & família = Josefin + Placa: itálico, peso @ 0,100; 0,200; 0,400; 0,500; 0,600; 1.100; 1.200; 1.300; 1.500; 1.600; 1.700 &família = Verde: itálico, peso @ 0,200; 0,300; 0,400; 0,500; 0,600; 1,200; 1,300; 1,400; 1,500 & display = swap");
 /*Importando icones do fontawesome*/
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css");
+
+* {
+    /*quando se coloca o asteristico quer dize que essa configuração será para toda a pagina*/
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    width: 100%;
+    height: 100vh;
+    /*quando se coloca o vh ele diz que a altura será a altura da visualização da pagina, ou seja, vai ocupar tudo, até que se role para baixo*/
+    overflow: hidden;
+    /*Desabilita a possibilidade do cabecalho passar do tamanho da janela. em outras palavras, desabilita a possibilidade de gerar a barra para mover para a lateral*/
+    position: relative;
+}
+
+.img-wrapper {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.8);
+    /*coloca um black groud na div para a imagem não ser auterada*/
+}
+
+.img-wrapper img {
+    /*to selecioando todas as imagens que estão dentro da classe img-wrapper*/
+    width: 100%;
+    /*Obrigando a imagem a se adaptar ao img-wrapper*/
+    height: 100%;
+    object-fit: cover;
+    /*faz com que a imagem cubra o div e no caso o head tbm*/
+    opacity: 0.5;
+    /*trata a opacidade da imagem*/
+    /*animation: nome, duração, */
+    /*tá dizendo que vai acontecer a animação zoom criada no @keyframes por 10 segundos*/
+    animation: zoom 10s; 
+}
+/*to criando um key frame que basicamente é um evento que vai acontecer, eu digo lá dentro que no 0% vou dá um zoom de 30% e no 100% de carregamento da pagina o zoom vai estar igual a imagem padrão*/
+@keyframes zoom{
+    0%{
+        transform: scale(1.7);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
+.banner {
+    position: absolute;
+    /*colocando em posição absuluta para poder ficar em cima da imagem, porem para usar o absolute, a div que cobre tem que ser obrigatoriamente relative*/
+    top: 30%;
+    left: 15%;
+    
+    /* animation: moveBanner 1s ;chamando o key frame moveBanner para ser execultado em 1 s */
+}
+/*esse key frame vai ser para o texto vim de baixo*/
+@keyframes moveBanner{
+    0%{
+        /*ele desce 5 rem no translatey para baixo(para o eixo y do plano cartesiano). No rotatey ele roda no eixoy -30 graus */
+        transform: translatey(1.5rem); /*rotatey(-30deg)*/
+        opacity: 0; /*No 0% ele não vai aparecer, no 100% ele vai aparecer*/
+    }
+    100%{
+        transform: translatey(0) rotatey(0);
+        opacity: 1;
+    }
+
+}
+
+.banner h1 {
+    color: white;
+    /*rem é a unidade de medida que segue o padrão de tamanho de fonte do navegador ou seja 2 rem é 32px, pois por padrão o normal dos navegadores é 16px*/
+    font-size: 1rem;
+    /*px deixa o texto sempre do msm tamanho, o rem é resposivo*/
+    font-family: "Baloo   Da   2", serif;
+    /*é a força do negrito, o peso que ele tem*/
+    font-weight: 200;
+    /*Sombra no h1*/
+    text-shadow: 0.1rem 0.1rem 2px rgba(0, 0, 0, 15);
+    line-height: 1rem;
+    /*altura da linha*/
+    margin-bottom: 0.6rem;
+    /*espaçamento para o elemento de baixo*/
+    animation: moveBanner 1s; /*animation vai entrar com 1 segundo*/
+    
+}
+
+.banner p {
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.8rem;
+    text-shadow: 0.1rem 0.1rem 2px rgba(0, 0, 0, 15);
+    margin-bottom: 0.6rem;
+    animation: moveBanner 1.5s; /*animation vai entrar com 1.5 segundo*/
+}
+
+.banner button {
+    font-family: "Muli", garamond;
+    color: white;
+    /*Site onde se encontra blackgroud color em degrade é o uigradients*/
+    background-color: #6a3093;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #a044ff, #6a3093);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #a044ff, #6a3093);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    /*Margin interna do botão, .3 será aplicado em cima e embaixo e o .8 será dos lados*/
+    padding: .3rem .8rem;
+    border: none;
+    /*nenhuma borda no botão*/
+    font-size: 0.1rem;
+    /*Deixar o texto em caixa alta*/
+    text-transform: uppercase;
+    /*espaçamento entre as letras do button*/
+    letter-spacing: 0.5px;
+    /*borda do botão*/
+    border-radius: 5px;
+    /*esse é um cursor que ao passar no botão ele indica que isso é para ser criado*/
+    cursor: pointer;
+    animation: moveBanner 2s; /*animation vai entrar com 2 segundo*/
+}
+/*Essa configuração indica que irá acontecer quando o mouse for passado no button*/
+.banner button:hover{
+    opacity: 0.8;
+    color: black;
+
+}
+
+/**/
