@@ -1,3 +1,4 @@
+<!---->
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -15,13 +16,22 @@
     <link rel="icon" type="image/png" sizes="16x16" href="imagens/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
     <title>Portfólio - Profissional Nelcael</title>
-     <!--Para mover um bloco de codigo basta selecionar pressionar alt e mexer na setas-->
+    <!--Para mover um bloco de codigo basta selecionar pressionar alt e mexer na setas-->
     <!--para selecionar mais de uma linha no vs basta segurar o alt e ir clicando-->
 </head>
 
 <body>
     <!-- só de digitar div.container o vc code cria as tags sozinho-->
     <div class="container">
+
+        <div class="hamburguer">
+            <!--esse é o hamburger do menu que é exibido quando não teve nenhum clique ainda-->
+            <!--a classe pode ser aplicada a varios elementos, já o id é unico-->
+            <div class="line" id="line1"> </div>
+            <div class="line" id="line2"> </div>
+            <div class="line" id="line3"> </div>
+        </div>
+
         <header>
             <div class="img-wrapper">
                 <img src="imagens/bg.jpg" alt="">
@@ -33,9 +43,28 @@
                 <button>Saiba mais</button>
             </div>
         </header>
-        <h1>Nelcael</h1>
+        <div class="sidebar">
+            <!--menu lateral-->
+            <nav>
+                <!--tag que representa uma sessão com links-->
+                <ul class="menu">
+                    <!--Lista desordenada-->
+                    <li class="menu-item"><a href="" class="menu-link">Home</a></li>
+                    <li class="menu-item"><a href="" class="menu-link">Conhecimento</a></li>
+                    <li class="menu-item"><a href="" class="menu-link">Projetos</a></li>
+                    <li class="menu-item"><a href="" class="menu-link">Contatos</a></li>
+                    <li class="menu-item"><a href="" class="menu-link">Orçamento</a></li>
+                </ul>
+            </nav>
+            <div class="social-media">
+                <!--está utilizando as classes fa... para importar do site fontawesome, no qual o import está no css -->
+                <a href=""><i class="fab fa-instagram "></i></a>
+                <a href=""><i class="fab fa-github "></i></a>
+                <a href=""><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
     </div>
-
+    
 
 
 </body>

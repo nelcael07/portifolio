@@ -2,13 +2,58 @@
 /*importando fontes do google fonts*/
 @import url("https://fonts.googleapis.com/css2? family = Baloo + Da + 2: wght @ 400; 500; 600; 700; 800 & família = Josefin + Placa: itálico, peso @ 0,100; 0,200; 0,400; 0,500; 0,600; 1.100; 1.200; 1.300; 1.500; 1.600; 1.700 &família = Verde: itálico, peso @ 0,200; 0,300; 0,400; 0,500; 0,600; 1,200; 1,300; 1,400; 1,500 & display = swap");
 /*Importando icones do fontawesome*/
+/*para importar os icones do site fontawesome tem que pegar o link de importamento no site cdnjs.com*/
+/*com a importação feita, somente colocando a  classe(pega no site https://fontawesome.com/v4.7.0/icons/ clicando no icone desejado) eu importo o icone que quero*/
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css");
 
 * {
     /*quando se coloca o asteristico quer dize que essa configuração será para toda a pagina*/
     margin: 0;
     padding: 0;
+    text-decoration: none;
+    list-style: none;
+
 }
+/*criação de variavel*/
+:root{
+      --font-primary: "Baloo   Da   2", serif; /*o nome da variavel é --font-primary e recebe o nome da fonte*/
+      --font-secudaria: 'Courier New', Courier, monospace;
+}
+
+
+.hamburguer {
+    background-color: transparent;
+    width: 0.5rem;
+    height: 0.5rem;
+    /*diz que a posição do icone de hamburger será fixa*/
+    position: fixed;
+    /*essa propriedade faz referencia a prioridade que esse elemento terá na pilha, como ele está 100 ele será exibido a cima de tudo, acima da foto de fundo*/
+    z-index: 100;
+    /*isso aqui diz a posição que ele ficará, esse right e top diz respeito aop tamanho da borda*/
+    right: 0.5rem;
+    top: 0.5rem;
+    /*esses tres atributos dizem que as linhas ficaram em formato de coluna, uma de baixo da outra*/
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    cursor: pointer;
+   
+}
+.hamburguer:hover{
+    opacity: 0.6;
+}
+
+.line{
+    width: 100%;
+    background-color: white;
+    height: 0.4px;
+    box-shadow: 0.1px 0.1px 0.7px black;
+    
+    
+
+}
+
+
 
 header {
     width: 100%;
@@ -38,14 +83,16 @@ header {
     /*trata a opacidade da imagem*/
     /*animation: nome, duração, */
     /*tá dizendo que vai acontecer a animação zoom criada no @keyframes por 10 segundos*/
-    animation: zoom 10s; 
+    animation: zoom 10s;
 }
+
 /*to criando um key frame que basicamente é um evento que vai acontecer, eu digo lá dentro que no 0% vou dá um zoom de 30% e no 100% de carregamento da pagina o zoom vai estar igual a imagem padrão*/
-@keyframes zoom{
-    0%{
+@keyframes zoom {
+    0% {
         transform: scale(1.7);
     }
-    100%{
+
+    100% {
         transform: scale(1);
     }
 }
@@ -53,19 +100,23 @@ header {
 .banner {
     position: absolute;
     /*colocando em posição absuluta para poder ficar em cima da imagem, porem para usar o absolute, a div que cobre tem que ser obrigatoriamente relative*/
-    top: 30%;
-    left: 15%;
-    
+    top: 23%;
+    left: 3%;
+
     /* animation: moveBanner 1s ;chamando o key frame moveBanner para ser execultado em 1 s */
 }
+
 /*esse key frame vai ser para o texto vim de baixo*/
-@keyframes moveBanner{
-    0%{
+@keyframes moveBanner {
+    0% {
         /*ele desce 5 rem no translatey para baixo(para o eixo y do plano cartesiano). No rotatey ele roda no eixoy -30 graus */
-        transform: translatey(1.5rem); /*rotatey(-30deg)*/
-        opacity: 0; /*No 0% ele não vai aparecer, no 100% ele vai aparecer*/
+        transform: translatey(1.5rem);
+        /*rotatey(-30deg)*/
+        opacity: 0;
+        /*No 0% ele não vai aparecer, no 100% ele vai aparecer*/
     }
-    100%{
+
+    100% {
         transform: translatey(0) rotatey(0);
         opacity: 1;
     }
@@ -75,28 +126,31 @@ header {
 .banner h1 {
     color: white;
     /*rem é a unidade de medida que segue o padrão de tamanho de fonte do navegador ou seja 2 rem é 32px, pois por padrão o normal dos navegadores é 16px*/
-    font-size: 1rem;
+    font-size: 0.7rem;
     /*px deixa o texto sempre do msm tamanho, o rem é resposivo*/
-    font-family: "Baloo   Da   2", serif;
+    /*a linha abaixo eu estou chamando a variavel --font-primary que contem dentro dela a fonte que quero usar aqui*/
+    font-family: var(--font-primary);
     /*é a força do negrito, o peso que ele tem*/
-    font-weight: 200;
+    font-weight: 300;
     /*Sombra no h1*/
     text-shadow: 0.1rem 0.1rem 2px rgba(0, 0, 0, 15);
     line-height: 1rem;
     /*altura da linha*/
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.3rem;
     /*espaçamento para o elemento de baixo*/
-    animation: moveBanner 1s; /*animation vai entrar com 1 segundo*/
-    
+    animation: moveBanner 1s;
+    /*animation vai entrar com 1 segundo*/
+
 }
 
 .banner p {
     color: white;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 0.8rem;
+    font-family: var(--font-secudaria);
+    font-size: 0.6rem;
     text-shadow: 0.1rem 0.1rem 2px rgba(0, 0, 0, 15);
-    margin-bottom: 0.6rem;
-    animation: moveBanner 1.5s; /*animation vai entrar com 1.5 segundo*/
+    margin-bottom: 1rem;
+    animation: moveBanner 1.5s;
+    /*animation vai entrar com 1.5 segundo*/
 }
 
 .banner button {
@@ -110,25 +164,76 @@ header {
     background: linear-gradient(to right, #a044ff, #6a3093);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     /*Margin interna do botão, .3 será aplicado em cima e embaixo e o .8 será dos lados*/
-    padding: .3rem .8rem;
+    padding: .1rem .3rem;
     border: none;
     /*nenhuma borda no botão*/
     font-size: 0.1rem;
     /*Deixar o texto em caixa alta*/
     text-transform: uppercase;
     /*espaçamento entre as letras do button*/
-    letter-spacing: 0.5px;
+    letter-spacing: 0.2px;
     /*borda do botão*/
-    border-radius: 5px;
-    /*esse é um cursor que ao passar no botão ele indica que isso é para ser criado*/
+    border-radius: 4px;
+    /*esse é um cursor que ao passar no botão ele indica que isso é para ser clicado*/
     cursor: pointer;
-    animation: moveBanner 2s; /*animation vai entrar com 2 segundo*/
+    animation: moveBanner 2s;
+    /*animation vai entrar com 2 segundo*/
 }
+
 /*Essa configuração indica que irá acontecer quando o mouse for passado no button*/
-.banner button:hover{
-    opacity: 0.8;
+.banner button:hover {
+    opacity: 0.6;
     color: black;
 
 }
+
+.sidebar{
+   width: 3.3rem;
+   height: 100vh;
+   background-color:white; 
+   position: fixed;
+   top:0;
+   right:0; 
+   
+}
+.menu{ /*ul*/
+  /*posição absulute diz que o conteudo ficará ali, porém ele não é fixo como no fixed que mantem ele indeendente de barra de rolagem*/  
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.menu :hover{
+    opacity: 0.6;
+}
+.menu-item{/*li*/
+    text-align: justify;
+}
+
+
+.menu-link{/*a*/
+   font-size: 0.3rem;
+   /*Chamando fonte secundaria*/
+   font-family: var(--font-secudaria);
+}
+
+
+.social-media{
+ position: absolute;
+ top:85%;
+ width: 100%;
+ height: 100%;
+ left:10%;
+ /* transform: translate(-50%, -50%); */
+
+}
+.social-media a{
+    
+  
+}
+.social-media i{
+    width: 12px;
+}
+
 
 /**/
