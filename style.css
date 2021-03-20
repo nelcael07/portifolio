@@ -14,10 +14,13 @@
     list-style: none;
 
 }
+
 /*criação de variavel*/
-:root{
-      --font-primary: "Baloo   Da   2", serif; /*o nome da variavel é --font-primary e recebe o nome da fonte*/
-      --font-secudaria: 'Courier New', Courier, monospace;
+:root {
+    --font-primary: "Baloo   Da   2", serif;
+    /*o nome da variavel é --font-primary e recebe o nome da fonte*/
+    --font-secudaria: 'Courier New', Courier, monospace;
+    --color-primary: #6a3093;
 }
 
 
@@ -37,23 +40,68 @@
     flex-direction: column;
     justify-content: space-evenly;
     cursor: pointer;
-   
+    /* transition: all 1.2s; */
 }
-.hamburguer:hover{
+
+.hamburguer:hover {
     opacity: 0.6;
 }
 
-.line{
+.line {
     width: 100%;
     background-color: white;
     height: 0.4px;
     box-shadow: 0.1px 0.1px 0.7px black;
-    
+    transition: 0.5s; /*QUANDO SE VAI FAZER UMA TRANSFORMAÇÃO POR MEIO DE JV, E VC QUER UM DETERMINADO TEMPO DE DEMORA PARA SER EXECUTADO A TRANSFORMAÇÃO VC MUDA O TRANSFORM NA CLASSE PAI*/
+}
+
+.hamburguer span{
+    position: absolute;
+    left: 0.7rem;
+    background-color: var(--color-primary);
+    color: white;
+    font-size: 4px;
+    font-family: var(--font-secudaria);
+    width: 1.0rem;
+    height: 0.3rem;
+    display: flex;   /*permite mexer no texto do span*/
+    justify-content: center;/*alinha na verdical*/
+    align-items: center;/*alinha na horizontal*/
+    margin-bottom: 3px;
+    opacity: 0;
+}
+.hamburguer span::before{ /*é a seta do span, ele é tipo um sub elemento*/
+  content: "";
+  position: absolute;
+  border-right: 2px solid var(--color-primary);
+  border-top: 2px solid transparent;
+  border-left: 2px solid transparent;
+  border-bottom: 2px solid transparent;
+  left: -0.3rem;
+  
+}
+.show-menu .hamburguer:hover span{ /*Aqui ele executa quando o show-menu estiver ativo e quando o hamburguer estiver com o houver*/
+    opacity: 1;
+}
+
+.show-menu #line2 {
+    /*quando a classe show menu é adicionada no container por meio do JS a linha 2 que é a do meio do hamburguer desaparece*/
+    opacity: 0;
+    visibility: hidden;
+}
+
+.show-menu #line1 {
+    /*quando a classe show menu é adicionada no container por meio do JS a linha 1 gira para forma um x e ela usa uma animação de opacidade*/
+    transform: rotate(45deg) translate(.0px, .45px);
     
 
 }
 
-
+.show-menu #line3 {
+    /*quando a classe show menu é adicionada no container por meio do JS a linha 3 gira para forma um x e ela usa uma animação de opacidade*/
+    transform: rotate(-45deg) translate(2.3px, -3px);
+   
+}
 
 header {
     width: 100%;
@@ -126,7 +174,7 @@ header {
 .banner h1 {
     color: white;
     /*rem é a unidade de medida que segue o padrão de tamanho de fonte do navegador ou seja 2 rem é 32px, pois por padrão o normal dos navegadores é 16px*/
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     /*px deixa o texto sempre do msm tamanho, o rem é resposivo*/
     /*a linha abaixo eu estou chamando a variavel --font-primary que contem dentro dela a fonte que quero usar aqui*/
     font-family: var(--font-primary);
@@ -140,17 +188,26 @@ header {
     /*espaçamento para o elemento de baixo*/
     animation: moveBanner 1s;
     /*animation vai entrar com 1 segundo*/
+     transition: 1s;
+   
 
 }
+.show-menu header h1{ /*diminuir o tamanho da fonte quando o menu abrir*/
+    font-size: 0.6rem;
+}
 
-.banner p {
+.banner p { /*diminuir o tamanho da fonte quando o menu abrir*/
     color: white;
     font-family: var(--font-secudaria);
-    font-size: 0.6rem;
+    font-size: 0.7rem;
     text-shadow: 0.1rem 0.1rem 2px rgba(0, 0, 0, 15);
     margin-bottom: 1rem;
     animation: moveBanner 1.5s;
+    transition: 1s;
     /*animation vai entrar com 1.5 segundo*/
+}
+.show-menu header p{ /*diminuir o tamanho da fonte quando o menu abrir*/
+    font-size: 0.5rem;
 }
 
 .banner button {
@@ -167,7 +224,7 @@ header {
     padding: .1rem .3rem;
     border: none;
     /*nenhuma borda no botão*/
-    font-size: 0.1rem;
+    font-size: 7px;
     /*Deixar o texto em caixa alta*/
     text-transform: uppercase;
     /*espaçamento entre as letras do button*/
@@ -178,6 +235,12 @@ header {
     cursor: pointer;
     animation: moveBanner 2s;
     /*animation vai entrar com 2 segundo*/
+    transition: 1s;
+}
+.show-menu header button{ /*diminuir o tamanho do botão quando o menu abrir*/
+    font-size: 5px;
+    padding: 0.1rem .2rem;
+    letter-spacing: 0.2px;
 }
 
 /*Essa configuração indica que irá acontecer quando o mouse for passado no button*/
@@ -187,52 +250,92 @@ header {
 
 }
 
-.sidebar{
-   width: 3.3rem;
-   height: 100vh;
-   background-color:white; 
-   position: fixed;
-   top:0;
-   right:0; 
-   
+/*========================formatação do menu lateral================================*/
+.sidebar {
+    width: 3.3rem;
+    height: 100vh;
+    background-color: white;
+    position: fixed;
+    /*vou usar a interação aqui, então esse fixo não vale muito*/
+    top: 0;
+    right: -5rem;
+    /* animation: MoveMenusaida 1s; */
+    transition: all 0.6s;
 }
-.menu{ /*ul*/
-  /*posição absulute diz que o conteudo ficará ali, porém ele não é fixo como no fixed que mantem ele indeendente de barra de rolagem*/  
-  position: absolute;
-  top: 45%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+
+/*aqui se coloca o .show-menu antes, pois ele está aplicado na classe pai(container) de sinebar*/
+.show-menu .sidebar {
+    /*quando eu uso .sedebar eu to acessando a classe sinebar, quando eu coloco .sinebar.show-menu eu to acessando a classe show-menu que é de sinebar ESSA CLASSE ESTÁ SENDO CHAMADA NO JAVACRIPT*/
+    right: 0;
+
 }
-.menu :hover{
-    opacity: 0.6;
+
+/*aqui se coloca o .show-menu antes, pois ele está aplicado na classe pai(container) de hambuguer*/
+.show-menu .hamburguer {
+    margin-right: 2rem;
 }
-.menu-item{/*li*/
+
+.menu {
+    /*ul*/
+    /*posição absulute diz que o conteudo ficará ali, porém ele não é fixo como no fixed que mantem ele indeendente de barra de rolagem*/
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translatex(-50%);
+}
+
+.menu-item {
+    /*li*/
     text-align: justify;
+    margin-bottom: -2px;
 }
 
-
-.menu-link{/*a*/
-   font-size: 0.3rem;
-   /*Chamando fonte secundaria*/
-   font-family: var(--font-secudaria);
-}
-
-
-.social-media{
- position: absolute;
- top:85%;
- width: 100%;
- height: 100%;
- left:10%;
- /* transform: translate(-50%, -50%); */
+.menu-link {
+    /*a*/
+    font-size: 0.3rem;
+    /*Chamando fonte secundaria*/
+    font-family: var(--font-secudaria);
+    color: #555;
 
 }
-.social-media a{
-    
-  
+
+.menu-link:hover {
+    opacity: 0.8;
+    color: var(--color-primary);
+    font-weight: bold;
+    transition: var(--color-primary)2s;
 }
-.social-media i{
-    width: 12px;
+
+.social-media {
+    position: absolute;
+    bottom: 0.4rem;
+    width: 100%;
+    display: flex;
+    /*destribui os elementos pela linha*/
+    justify-content: space-evenly;
+    /*ele dá um espaço entre os itens automatico*/
+
+
+
+    /* transform: translate(-50%, -50%); */
+}
+
+.social-media i {
+    /*Como o icon é um icone de fonte, tem que editar o tamanho dele por meio do font size*/
+    font-size: 0.3rem;
+    width: 0.5rem;
+    height: 0.5rem;
+    padding: 2px 1px 0px 1px;
+    text-align: center;
+    color: white;
+    background-color: var(--color-primary);
+    border-radius: 5px;
+
+}
+
+.social-media i:hover {
+    opacity: 0.6;
+
 }
 
 
