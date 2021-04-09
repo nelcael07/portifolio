@@ -13,8 +13,30 @@
     text-decoration: none;
     list-style: none;
     
-
+    
+    
+    
+    
 }
+/* sessão utilizada por todas as parte do codigo */
+.sessao-header {
+    display: flex;
+    align-items: center;
+    /*alinhamento vertical das divs*/
+    justify-content: center;
+    /*alinhamento horizontal das divs*/
+    margin-top: 0.2rem;
+    margin-bottom: 0.2rem;
+    margin-right: 0.2rem;
+    transition: all 0.5s;
+    width: 100%;
+    background-color:transparent;
+}
+/* .show-menu .sessao-header{
+    width: 80%;
+    /* left: 20%;
+    transform: translateX(-40%); */
+
 
 /*criação de variavel*/
 :root {
@@ -23,8 +45,19 @@
     --font-secudaria: 'Courier New', Courier, monospace;
     --color-primary: #6a3093;
     --color-cinza: #4b4b4b;
+    --color-fundo: #f5f5f5;
 }
 
+/* DIVISÃO DO CONTEUDO QUE FAZ COM QUE O SHOW MENU FUNCIONE PARA TODO MUNDO */
+.conteudohtml{
+    position: relative;
+    background-color: transparent;
+    width: 100%;
+    transition: all 0.5s;
+}
+.show-menu .conteudohtml{
+    width: 80.2%;
+}
 
 .hamburguer {
     background-color: transparent;
@@ -269,7 +302,7 @@ header {
 
 /*========================formatação do menu lateral================================*/
 .sidebar {
-    width: 3.3rem;
+    width: 20%;
     height: 100vh;
     background-color: white;
     position: fixed;
@@ -278,6 +311,7 @@ header {
     right: -5rem;
     /* animation: MoveMenusaida 1s; */
     transition: all 0.6s;
+    z-index: 80;
 }
 
 /*aqui se coloca o .show-menu antes, pois ele está aplicado na classe pai(container) de sinebar*/
@@ -304,7 +338,7 @@ header {
 .menu-item {
     /*li*/
     text-align: justify;
-    margin-bottom: -2px;
+    margin-bottom: -5px;
 }
 
 .menu-link {
@@ -357,59 +391,76 @@ header {
 
 /*=======================conhecimentos==============================*/
 
-.conhecimentos {
-    display: grid;
-    /*faz com que conhecimentos fique parecido com uma tabela do excel*/
-    grid-template-columns: repeat(16, 0.5fr);
-    /*configura que será 16 colunas*/
-    grid-template-rows: repeat(7, 0.6rem);
-    row-gap: 0.1rem;
+.conhecimentos-chefe {
+   position: absolute;
+   background-color:transparent;
+   width: 85%;
+   height: 80%;
+   left: 50%;
+   transform: translateX(-50%);
+   transition: all 0.5s;
+
 }
 
-.conhecimento:nth-child(1) {
-    /*to pegando o primeiro conhecimento /aqui estou alinhado o conhecimento no grid, na linha e na coluna*/
-    grid-column: 3/7;
-    grid-row: 1/3;
+.conhecimento{
+    position: absolute;
+    background-color: transparent;
+    width: 30%;
+    height: 40%;
+}
+.conhecimento-1{
+    left: 0%;
+    top: 0%;
+    
+   }
+.conhecimento-2{
+ right: 0%;
+ top: 0%;
+ 
+}
+.conhecimento-3{
+    bottom: 0%;
+    left: 0;
+}
+.conhecimento-4{
+    bottom: 0%;
+    right: 0%;
+}
+ .conhecimento-img-wrapper{
+    position: absolute;
+    background-color: transparent;
+    width: 30%;
+    height: 60%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    
+} 
+.conhecimento-img-wrapper img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50px;
+    box-shadow: black 1px;
+    box-shadow: 1px 1px 4px 1px  rgb(199, 199, 199);
+    
 }
 
-.conhecimento:nth-child(2) {
-    /*to pegando o segundo conhecimento /aqui estou alinhado o conhecimento no grid, na linha e na coluna*/
-    grid-column: 3/7;
-    grid-row: 7/-1;
-}
 
-.conhecimento:nth-child(3) {
-    /*to pegando o terceiro conhecimento /aqui estou alinhado o conhecimento no grid, na linha e na coluna*/
-    grid-column: 12/14;
-    grid-row: 1/3;
-}
-
-.conhecimento:nth-child(4) {
-    /*to pegando o quarto conhecimento/ aqui estou alinhado o conhecimento no grid, na linha e na coluna*/
-    grid-column: 12/14;
-    grid-row: 7/-1;
-}
 
 /*=================== formatação conhecimento=======*/
 .sessao-conhecimento {
+    position: relative;
     background-color: #f5f5f5;
     height: 100vh;
     margin: -3px;
-}
-
-.sessao-header {
-    display: flex;
-    align-items: center;
-    /*alinhamento vertical das divs*/
-    justify-content: center;
-    /*alinhamento horizontal das divs*/
-    margin-top: 0.2rem;
-    margin-bottom: 0.2rem;
+    width: 101.1%;
+    
+    
 }
 
 .sessao-header h1 {
     font-family: var(--font-secudaria);
-    font-size: 0.7rem;
+    font-size: 0.6rem;
     color: var(--color-cinza);
     border-bottom: solid 1px var(--color-primary);
     /*essa é a borda que vai de baixo da div*/
@@ -418,22 +469,24 @@ header {
 }
 
 .conhecimento-header {
-    display: flex;
-    /*faz com que o icone e o titulo fique um do lado do outro*/
-    align-items: center;
-    /*Alinha icone e paragrafo na msm linha*/
-    color: var(--color-cinza);
+   position: relative;
+   background-color: transparent;
+   text-align: center;
+   color: var(--color-cinza);
+   
 }
 
 .conhecimento-header i {
-    font-size: 1rem;
+    font-size: 10px;
 }
-
 .conhecimento-header h3 {
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 0.6rem;
-    padding-left: 0.2rem;
+    font-size: 5px;
+    /* padding-left: 0.2rem; */
+    
 }
+
+
 
 .conhecimento-text p {
     font-family: Arial, Helvetica, sans-serif;
@@ -444,37 +497,250 @@ header {
     background-color: transparent;
     width: 3.5rem;
     height: 100%;
+    transition: all 0.5s;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+
+
+
+
+/* ========================formatação da aba projetos================================ */
+.sessao-projetos {
+    margin-top: -1.5%;
+    background-color: #f5f5f5;
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    transition: all 1s;
 
 }
 
-.conhecimento-img-wrapper {
-    grid-column: 8/10;
-    grid-row: 3/6;
-    width:  100%;
-    padding-right: 1rem;
-    padding-left: 1rem;
-    justify-content: center;
-    align-items: center; 
-    background-color:transparent;
 
 
 
-
-
-}
-
-.conhecimento-img-wrapper img {
-    width: 4rem;
-    height: 4rem;
-    object-fit: cover;
-    
+.card {
+    margin-top: 2%;
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    opacity: 1;
+    left: 50%;
     transform: translatex(-50%);
-    
-    
+    transition: all 0.5s;
+}
 
 
+.card:hover img {
+    opacity: 0.2;
+}
 
+.card:hover .card-info {
+    opacity: 1;
+}
+
+.card-imagem-wrapper {
+    position: absolute;
+    width: 100%;
+    height: 95%;
+    left: 50%;
+    transform: translatex(-50%);
+    background-color: black;
+}
+
+.card-imagem-wrapper img {
+    width: 100%;
+    height: 100%;
 
 }
 
-/**/
+.card-info {
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    left: 50%;
+    transform: translatex(-50%);
+    background-color: transparent;
+    padding-left: 5%;
+    opacity: 0;
+
+}
+
+.card-info h2 {
+    font-size: 10px;
+    color: white;
+    font-family: var(--font-secudaria);
+}
+
+.card-info h3 {
+    font-size: 5pt;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--color-primary);
+    font-weight: bolder;
+}
+
+.card-info p {
+    margin-left: 5%;
+    margin-top: 1%;
+    margin-bottom: 5%;
+    font-size: 5px;
+    color: white;
+    font-family: var(--font-secudaria);
+}
+
+.card-info .paragrafo {
+    margin-top: 2%;
+    margin-bottom: 2%;
+    position: absolute;
+    width: 90%;
+    height: 25%;
+    background-color: var(--color-primary);
+    border-radius: 15px;
+}
+
+
+/*=====================formatação da sessão contatos======================= */
+
+.sessao-contato {
+    margin-top: -1.5%;
+    background-color: var(--color-cinza);
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    
+
+}
+
+
+
+.header-modificador-contato h1 {
+    color: var(--color-fundo);
+}
+
+.contato-wrapper {
+    position: absolute;
+    background-color: transparent;
+    width: 70%;
+    height: 75%;
+    display: flex;
+    border-radius: 10px;
+    left: 50%;
+    top: 52%;
+    transform: translate(-50%, -50%);
+    transition: all 0.5s;
+}
+
+
+
+.contato-left {
+
+    width: 35%;
+    background: linear-gradient(rgba(15, 15, 15, 0.6), rgba(22, 22, 22, 0.9)), url(imagens/Contato.jpg);
+    background-size: cover;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+/* div global */
+.contato-rigth {
+    position: absolute;
+    right: 0;
+    width: 65%;
+    height:100%;
+    background-color: #eee;
+    padding-left: 3%;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+/* formulario */
+.contato-rigth form {
+    position: absolute;
+    width: 70%;
+    height: 100%;
+    background-color: transparent;
+}
+
+/* divs */
+.input-group {
+    position: relative;
+    background-color: transparent;
+    width: 100%;
+    height: 15%;
+
+}
+
+/* label - texto 'nome' */
+.field-label {
+    position: absolute;
+    top: 70%;
+    font-size: 4px;
+    color: var(--color-cinza);
+    display: block;
+    text-transform: uppercase;
+    transition: all 0.5s;
+}
+
+/* input */
+.field {
+    bottom: 0%;
+    position: absolute;
+    width: 100%;
+    height: 40%;
+    background: transparent;
+    border: none;
+    /* tirando a marcação quando ele está selecionado */
+    outline: none;
+    /* colocando margin bootom pontinhada */
+    border-bottom: 0.5px rgb(158, 158, 158) dashed;
+    font-size: 3px;
+    font-family: var(--font-secudaria);
+    color: var(--color-cinza);
+
+}
+/* esse é o evento focus que perminte com que quando o input for seleciondo aconteça alguma coisa */
+/* esse ~ que dizer subsequente, ou seja, o label subsequente a ele vai sofrer a alteração */
+/* esse valid serve basicamente para mater o titulo lá em cima quando o input tem algo dentro digitado */
+.field:valid~label, 
+.field:focus~label {
+    top: 0%;
+    font-size: 3px;
+}
+.field:valid~label,
+.field:focus{
+    border-bottom: 0.2px solid;
+}
+
+/* classe do input */
+.input-2 {
+    margin-top: 5%;
+}
+
+.input-3 {
+    margin-top: 5%;
+
+}
+/* o text area te permite modelar o tamanho da caixa de texto para digitar a mensagem */
+/* nessa formatação a baixo eu coloco o max e min para esses ajustes */
+#mensagem{
+    position: absolute;
+    background-color: transparent;
+    
+    max-width: 120%;
+    min-width: 50%;
+    max-height: 70%;
+}
+
+.contato-rigth button {
+    position: absolute;
+    margin-top: 5%;
+    width: 100%;
+    font-size: 5px;
+    padding: 2px;
+    border: none;
+    background-color: var(--color-primary);
+    border-radius: 4px;
+    color: white;
+    text-transform: uppercase;
+}
